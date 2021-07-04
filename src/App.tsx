@@ -81,41 +81,9 @@ function App() {
           loginPage={CustLoginPage}
         >
           <Resource
-            name="rooms"
-            list={RoomsList}
-            edit={EditRoom}
-            create={CreateRoom}
-          />
-          <Resource
-            name="meeting_rooms"
-            list={MeetingRoomsList}
-            edit={EditMeetingRoom}
-            create={CreateMeetingRoom}
-          />
-          <Resource
-            name="rates"
-            create={CreateRate}
-            edit={EditRate}
+            name="core_user"
             list={ListGuesser}
-          />
-          <Resource
-            name="room_rates"
-            list={RoomRatesList}
-            create={CreateRoomRate}
-            edit={EditRoomRate}
-          />
-          <Resource
-            name="settings"
-            list={ListGuesser}
-            create={CreateSetting}
-            edit={EditSetting}
-          />
-          <Resource
-            name="gallery"
-            list={GalleryList}
-            edit={EditGallery}
-            create={CreateGallery}
-            //  create={}
+
           />
         </Admin>
       </ApolloProvider>
