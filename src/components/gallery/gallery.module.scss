@@ -1,0 +1,11 @@
+.galleryImages {
+  display: flex;
+  flex-wrap: nowrap;
+  /* justify-content:; */
+}
+
+.galleryImage img {
+  width: 80px;
+  height: 80px;
+  margin: 0 5px;
+}
