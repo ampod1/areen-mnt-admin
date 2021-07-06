@@ -2,49 +2,28 @@ import {
 	ApolloClient,
 	ApolloProvider,
 	HttpLink,
-	InMemoryCache,
+	InMemoryCache
 } from '@apollo/client';
-import React, { useEffect, useState } from 'react';
 //@ts-ignore
 import buildHasuraProvider from 'ra-data-hasura';
+import React, { useEffect, useState } from 'react';
 import {
-	Admin,
-	EditGuesser,
-	LegacyDataProvider,
-	ListGuesser,
-	Login,
-	Resource,
+	Admin, ListGuesser, Resource
 } from 'react-admin';
 import './App.css';
-import { MyAuthProvider } from './MyAuthProvider';
-import RoomsList from './components/rooms/RoomsList';
-import MeetingRoomsList from './components/meetings/MeetingRooms';
-import EditMeetingRoom from './components/meetings/EditMeetingRoom';
-import CreateMeetingRoom from './components/meetings/CreateMeetingRoom';
-import CreateRate from './components/rates/CreateRate';
-import EditRate from './components/rates/EditRate';
-import CreateRoomRate from './components/roomrates/CreateRoomRate';
-import EditRoom from './components/rooms/EditRoom';
-import CreateRoom from './components/rooms/CreateRoom';
-import RoomRatesList from './components/roomrates/RoomRatesList';
-import EditRoomRate from './components/roomrates/EditRoomRate';
-import CreateSetting from './components/settings/CreateSetting';
-import EditSetting from './components/settings/EditSetting';
-import { theme } from './theme';
-import GalleryList from './components/gallery/GalleryList';
-import EditGallery from './components/gallery/EditGallery';
-import CreateGallery from './components/gallery/CreateGallery';
-import CustLoginPage from './CustLoginPage';
-import CreateUsertype from './components/coreUsertype/CreateUsertype';
-import EditUsertype from './components/coreUsertype/EditUsertype';
+import CreateCustomer from './components/bsc/customer/CreateCustomer';
+import EditCustomer from './components/bsc/customer/EditCustomer';
 import CreateUser from './components/coreUser/CreateUser';
 import EditUser from './components/coreUser/EditUser';
-import UsertypeList from './components/coreUsertype/UsertypeList';
-import EditCustomer from './components/bsc/customer/EditCustomer';
-import CreateCustomer from './components/bsc/customer/CreateCustomer';
-import { EditItem } from './components/mnt/items/EditItem';
-import { CreateItem } from './components/mnt/items/CreateItem';
 import { UserList } from './components/coreUser/UserList';
+import CreateUsertype from './components/coreUsertype/CreateUsertype';
+import EditUsertype from './components/coreUsertype/EditUsertype';
+import UsertypeList from './components/coreUsertype/UsertypeList';
+import { CreateItem } from './components/mnt/items/CreateItem';
+import { EditItem } from './components/mnt/items/EditItem';
+import CustLoginPage from './CustLoginPage';
+import { MyAuthProvider } from './MyAuthProvider';
+import { theme } from './theme';
 const headers = {
 	'content-type': 'application/json',
 	'x-hasura-admin-secret': process.env.REACT_APP_HASURA_GRAPHQL_ADMIN_SECRET,
