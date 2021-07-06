@@ -35,6 +35,11 @@ import GalleryList from "./components/gallery/GalleryList";
 import EditGallery from "./components/gallery/EditGallery";
 import CreateGallery from "./components/gallery/CreateGallery";
 import CustLoginPage from "./CustLoginPage";
+import CreateUsertype from "./components/coreUsertype/CreateUsertype";
+import EditUsertype from "./components/coreUsertype/EditUsertype";
+import CreateUser from "./components/coreUser/CreateUser";
+import EditUser from "./components/coreUser/EditUser";
+import UsertypeList from "./components/coreUsertype/UsertypeList";
 const headers = {
   "content-type": "application/json",
   "x-hasura-admin-secret": process.env.REACT_APP_HASURA_GRAPHQL_ADMIN_SECRET,
@@ -71,9 +76,15 @@ function App() {
   return (
     <>
       <ApolloProvider client={client}>
-        <div style={{display:"flex", justifyContent:"center", margin:"3em 1em 1em 1em"}}>
-			<img src="https://i.imgur.com/e6M6rwe.png" alt="" />
-		</div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            margin: "3em 1em 1em 1em",
+          }}
+        >
+          <img src="https://i.imgur.com/e6M6rwe.png" alt="" />
+        </div>
         <Admin
           authProvider={new MyAuthProvider()}
           theme={theme}
@@ -83,8 +94,16 @@ function App() {
           <Resource
             name="core_user"
             list={ListGuesser}
-
+            create={CreateUser}
+            edit={EditUser}
           />
+          <Resource
+            name="core_usertype"
+            list={UsertypeList}
+            create={CreateUsertype}
+            edit={EditUsertype}
+          />
+          <Resource name="bsc_customer" list={ListGuesser} />
         </Admin>
       </ApolloProvider>
     </>
