@@ -44,6 +44,7 @@ import EditCustomer from './components/bsc/customer/EditCustomer';
 import CreateCustomer from './components/bsc/customer/CreateCustomer';
 import { EditItem } from './components/mnt/items/EditItem';
 import { CreateItem } from './components/mnt/items/CreateItem';
+import { UserList } from './components/coreUser/UserList';
 const headers = {
 	'content-type': 'application/json',
 	'x-hasura-admin-secret': process.env.REACT_APP_HASURA_GRAPHQL_ADMIN_SECRET,
@@ -97,7 +98,7 @@ function App() {
 				>
 					<Resource
 						name="core_user"
-						list={ListGuesser}
+						list={UserList}
 						create={CreateUser}
 						edit={EditUser}
 					/>
