@@ -18,7 +18,7 @@ export const UserList = (props: any) => (
 			<DateField source="phone" />
 			<DateField source="created_at" />
 			<DateField source="updated_at" />
-			<ReferenceField source="usertype_id" reference="core_usertype">
+			<ReferenceField source="user_type_id" reference="core_usertype">
 				<TextField source="label.en" />
 			</ReferenceField>
 		</Datagrid>
