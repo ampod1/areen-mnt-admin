@@ -4,17 +4,11 @@ import {
   HttpLink,
   InMemoryCache,
 } from "@apollo/client";
+import { makeStyles } from "@material-ui/core/styles";
 //@ts-ignore
 import buildHasuraProvider from "ra-data-hasura";
 import React, { useEffect, useState } from "react";
-import {
-  Admin,
-  ListGuesser,
-  Login,
-  LoginComponent,
-  LoginForm,
-  Resource,
-} from "react-admin";
+import { Admin, ListGuesser, Login, Resource } from "react-admin";
 import "./App.css";
 import CreateCustomer from "./components/bsc/customer/CreateCustomer";
 import EditCustomer from "./components/bsc/customer/EditCustomer";
@@ -24,11 +18,11 @@ import { UserList } from "./components/coreUser/UserList";
 import CreateUsertype from "./components/coreUsertype/CreateUsertype";
 import EditUsertype from "./components/coreUsertype/EditUsertype";
 import UsertypeList from "./components/coreUsertype/UsertypeList";
+import Dashboard from "./components/dashboard/Dashboard";
 import { CreateItem } from "./components/mnt/items/CreateItem";
 import { EditItem } from "./components/mnt/items/EditItem";
 import CustLoginPage from "./CustLoginPage";
 import { MyAuthProvider } from "./MyAuthProvider";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { theme } from "./theme";
 const headers = {
   "content-type": "application/json",
@@ -102,6 +96,7 @@ function App() {
           theme={theme}
           dataProvider={dataProvider!}
           loginPage={MyLoginPage}
+          dashboard={Dashboard}
         >
           <Resource
             name="core_user"
