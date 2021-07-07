@@ -7,25 +7,20 @@ import {
   NumberField,
   TextField,
 } from "react-admin";
-import { useMyDefaultStyles } from "../../styles/default";
+import { useMyDefaultStyles } from "../../../styles/default";
 
-export default function UsertypeList(props: ListProps) {
+export default function CustomersList(props: ListProps) {
   const defaultClss = useMyDefaultStyles();
   return (
     <List {...props}>
       <Datagrid rowClick="edit">
         <NumberField source="code" headerClassName={defaultClss.header} />
         <TextField
-          source="label.ar"
-          label="الاسم العربي"
+          source="name.full"
           headerClassName={defaultClss.header}
+          label="Customer's Name"
         />
-        <TextField
-          headerClassName={defaultClss.header}
-          source="label.en"
-          label="Name En"
-        />
-        <DateField headerClassName={defaultClss.header} source="created_at" />
+        <DateField source="created_at" headerClassName={defaultClss.header} />
       </Datagrid>
     </List>
   );

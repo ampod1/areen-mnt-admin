@@ -11,6 +11,7 @@ import React, { useEffect, useState } from "react";
 import { Admin, ListGuesser, Login, Resource } from "react-admin";
 import "./App.css";
 import CreateCustomer from "./components/bsc/customer/CreateCustomer";
+import CustomersList from "./components/bsc/customer/CustomersList";
 import EditCustomer from "./components/bsc/customer/EditCustomer";
 import CreateUser from "./components/coreUser/CreateUser";
 import EditUser from "./components/coreUser/EditUser";
@@ -23,6 +24,7 @@ import { CreateItem } from "./components/mnt/items/CreateItem";
 import { EditItem } from "./components/mnt/items/EditItem";
 import CustLoginPage from "./CustLoginPage";
 import { MyAuthProvider } from "./MyAuthProvider";
+import CustomLayout from "./reactAdminCustom/CustomLayout";
 import { theme } from "./theme";
 const headers = {
   "content-type": "application/json",
@@ -97,6 +99,7 @@ function App() {
           dataProvider={dataProvider!}
           loginPage={MyLoginPage}
           dashboard={Dashboard}
+          layout={CustomLayout}
         >
           <Resource
             name="core_user"
@@ -112,7 +115,7 @@ function App() {
           />
           <Resource
             name="bsc_customer"
-            list={ListGuesser}
+            list={CustomersList}
             edit={EditCustomer}
             create={CreateCustomer}
           />

@@ -1,6 +1,6 @@
-import { defaultTheme } from "react-admin";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import merge from "lodash/merge";
+import { defaultTheme } from "react-admin";
 
 export const theme = createMuiTheme(
   merge({}, defaultTheme, {
@@ -10,6 +10,9 @@ export const theme = createMuiTheme(
       secondary: {
         main: "#b02626", // Not far from orange
       },
+    },
+    sidebar: {
+      closedWidth: 80,
     },
   })
 );

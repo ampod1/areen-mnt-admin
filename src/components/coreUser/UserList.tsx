@@ -1,26 +1,37 @@
 import {
-	List,
-	Datagrid,
-	NumberField,
-	DateField,
-	EmailField,
-	TextField,
-	ReferenceField,
-} from 'react-admin';
+  Datagrid,
+  DateField,
+  EmailField,
+  List,
+  NumberField,
+  ReferenceField,
+  TextField,
+} from "react-admin";
+import { useMyDefaultStyles } from "../../styles/default";
 
-export const UserList = (props: any) => (
-	<List {...props}>
-		<Datagrid rowClick="edit">
-			<NumberField source="code" />
-			<EmailField source="email" />
-			<TextField source="id" />
-			<TextField source="name.full" />
-			<DateField source="phone" />
-			<DateField source="created_at" />
-			<DateField source="updated_at" />
-			<ReferenceField source="user_type_id" reference="core_usertype">
-				<TextField source="label.en" />
-			</ReferenceField>
-		</Datagrid>
-	</List>
-);
+export const UserList = (props: any) => {
+  const defaultClss = useMyDefaultStyles();
+  return (
+    <List {...props}>
+      <Datagrid rowClick="edit">
+        <NumberField headerClassName={defaultClss.header} source="code" />
+        <EmailField source="email" headerClassName={defaultClss.header} />
+        <TextField
+          source="name.full"
+          label="Name"
+          headerClassName={defaultClss.header}
+        />
+        <TextField source="phone" headerClassName={defaultClss.header} />
+        <DateField source="created_at" headerClassName={defaultClss.header} />
+
+        <ReferenceField
+          headerClassName={defaultClss.header}
+          source="user_type_id"
+          reference="core_usertype"
+        >
+          <TextField source="label.en" />
+        </ReferenceField>
+      </Datagrid>
+    </List>
+  );
+};
