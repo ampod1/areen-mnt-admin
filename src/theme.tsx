@@ -8,8 +8,8 @@ export const theme = createMuiTheme(
       // Your theme goes here
       // Write the following code to have an orange app bar. We'll explain it later in this article.
       secondary: {
-        main: "#AD926B", // Not far from orange
+        main: "#b02626", // Not far from orange
       },
     },
   })
-); 
+);
