@@ -1,14 +1,17 @@
 import {
   ApolloClient,
   ApolloProvider,
+  gql,
   HttpLink,
   InMemoryCache,
 } from "@apollo/client";
-
-//@ts-ignore
-import buildHasuraProvider from "ra-data-hasura";
+import buildHasuraProvider, {
+  BuildFields,
+  buildFields,
+  FetchType,
+} from "ra-data-hasura";
 import React, { useEffect, useState } from "react";
-import { Admin, ListGuesser, Login, Resource } from "react-admin";
+import { Admin, LegacyDataProvider, ListGuesser, Resource } from "react-admin";
 import "./App.css";
 import CreateCustomer from "./components/bsc/customer/CreateCustomer";
 import CustomersList from "./components/bsc/customer/CustomersList";
@@ -30,6 +33,7 @@ import { MyAuthProvider } from "./MyAuthProvider";
 import CustomLayout from "./reactAdminCustom/CustomLayout";
 import CustomLogin from "./reactAdminCustom/CustomLogin";
 import { theme } from "./theme";
+
 const headers = {
   "content-type": "application/json",
   "x-hasura-admin-secret": process.env.REACT_APP_HASURA_GRAPHQL_ADMIN_SECRET,
@@ -47,16 +51,46 @@ const createApolloClient = () => {
     },
   });
 };
+const extractFieldsFromQuery = (queryAst: any) => {
+  return queryAst.definitions[0].selectionSet.selections;
+};
+
+const DELETE_MNT_REQUEST_ASSIGN = gql`
+  mutation ($code: Int) {
+    delete_mnt_request_assign(where: { code: { _eq: $code } }) {
+      affected_rows
+    }
+  }
+`;
+
+const customBuildFields: BuildFields = (type, fetchType) => {
+  const resourceName = type.name;
+  console.log(resourceName, fetchType);
+
+  if (
+    resourceName === "mnt_request_assign" &&
+    fetchType === FetchType.DELETE_MANY
+  ) {
+    console.log("extractFieldsFromQuery mnt_request_assign");
+    //return extractFieldsFromQuery(DELETE_MNT_REQUEST_ASSIGN);
+  }
+
+  // No custom query defined, so use the default query fields (all, but no related/nested).
+  return buildFields(type, fetchType);
+};
 
 const client = createApolloClient();
 function App() {
-  const [dataProvider, setDataProvider] = useState(null);
+  const [dataProvider, setDataProvider] = useState<null | Function>(null);
 
   useEffect(() => {
     const buildDataProvider = async () => {
-      const dataProvider = await buildHasuraProvider({
-        client,
-      });
+      const dataProvider = await buildHasuraProvider(
+        {
+          client,
+        }
+        //{ buildFields: customBuildFields }
+      );
       setDataProvider(() => dataProvider);
     };
     buildDataProvider();
@@ -69,7 +103,7 @@ function App() {
         <Admin
           authProvider={new MyAuthProvider()}
           theme={theme}
-          dataProvider={dataProvider!}
+          dataProvider={dataProvider as LegacyDataProvider}
           loginPage={CustomLogin}
           dashboard={Dashboard}
           layout={CustomLayout}

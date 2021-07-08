@@ -1,17 +1,16 @@
 import React, { useCallback } from "react";
 import {
-  SimpleForm,
-  TextInput,
   ReferenceInput,
   SelectInput,
+  SimpleForm,
+  TextInput,
+  useDataProvider,
   useMutation,
-  CreateProps,
-  EditProps,
-  SimpleFormProps,
 } from "react-admin";
 
 export default function RequestForm(props: any) {
   const [mutate] = useMutation();
+  const dataProvider = useDataProvider();
   const save = useCallback(
     async (data) => {
       console.log("props", props);
@@ -34,6 +33,11 @@ export default function RequestForm(props: any) {
         console.log(returnedData);
         const { id } = returnedData.data;
         // Remove old assingments
+        dataProvider.deleteMany("mnt_request_assign", {
+            ids:["0"]
+        } , {
+          fetch: "DELETE_MNT_REQUEST_ASSIGN_MUTATION",
+        });
 
         await mutate({
           type: "create",
