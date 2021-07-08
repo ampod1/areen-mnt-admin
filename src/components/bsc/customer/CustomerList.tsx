@@ -9,7 +9,7 @@ import {
 } from "react-admin";
 import { useMyDefaultStyles } from "../../../styles/default";
 
-export default function CustomersList(props: ListProps) {
+export default function CustomerList(props: ListProps) {
   const defaultClss = useMyDefaultStyles();
   return (
     <List {...props}>

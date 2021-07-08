@@ -14,7 +14,7 @@ import React, { useEffect, useState } from "react";
 import { Admin, LegacyDataProvider, ListGuesser, Resource } from "react-admin";
 import "./App.css";
 import CreateCustomer from "./components/bsc/customer/CreateCustomer";
-import CustomersList from "./components/bsc/customer/CustomersList";
+import CustomerList from "./components/bsc/customer/CustomerList";
 import EditCustomer from "./components/bsc/customer/EditCustomer";
 import CreateUser from "./components/coreUser/CreateUser";
 import EditUser from "./components/coreUser/EditUser";
@@ -23,13 +23,15 @@ import CreateUsertype from "./components/coreUsertype/CreateUsertype";
 import EditUsertype from "./components/coreUsertype/EditUsertype";
 import UsertypeList from "./components/coreUsertype/UsertypeList";
 import Dashboard from "./components/dashboard/Dashboard";
-import { CreateItem } from "./components/mnt/items/CreateItem";
-import { EditItem } from "./components/mnt/items/EditItem";
+import CustomerUnitList from "./components/mnt/customerUnit/CustomerUnitList";
+import { CreateMntItem } from "./components/mnt/mntItems/CreateMntItem";
+import { EditMntItem } from "./components/mnt/mntItems/EditMntItem";
 import ProjectList from "./components/mnt/project/ProjectList";
 import RequestCreate from "./components/mnt/request/RequestCreate";
 import RequestEdit from "./components/mnt/request/RequestEdit";
 import RequestList from "./components/mnt/request/RequestList";
 import RequestAssignList from "./components/mnt/requestAssign/RequestAssignList";
+import UnitList from "./components/mnt/unit/UnitList";
 import { MyAuthProvider } from "./MyAuthProvider";
 import CustomLayout from "./reactAdminCustom/CustomLayout";
 import CustomLogin from "./reactAdminCustom/CustomLogin";
@@ -125,34 +127,30 @@ function App() {
           />
           <Resource
             name="bsc_customer"
-            list={CustomersList}
+            list={CustomerList}
             edit={EditCustomer}
             create={CreateCustomer}
           />
           <Resource
             name="mnt_item"
             list={ListGuesser}
-            edit={EditItem}
-            create={CreateItem}
+            edit={EditMntItem}
+            create={CreateMntItem}
           />
           <Resource name="mnt_site" />
           <Resource
             name="mnt_project"
             list={ProjectList}
-            edit={EditItem}
-            create={CreateItem}
+
           />
           <Resource
             name="mnt_unit"
-            list={ListGuesser}
-            edit={EditItem}
-            create={CreateItem}
+            list={UnitList}
           />
           <Resource
             name="mnt_customer_unit"
-            list={ListGuesser}
-            edit={EditItem}
-            create={CreateItem}
+            list={CustomerUnitList}
+
           />
           <Resource
             name="mnt_request"
@@ -163,8 +161,6 @@ function App() {
           <Resource
             name="mnt_request_assign"
             list={RequestAssignList}
-            edit={EditItem}
-            create={CreateItem}
           />
         </Admin>
       </ApolloProvider>
