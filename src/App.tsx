@@ -29,6 +29,7 @@ import ProjectList from "./components/mnt/project/ProjectList";
 import RequestCreate from "./components/mnt/request/RequestCreate";
 import RequestEdit from "./components/mnt/request/RequestEdit";
 import RequestList from "./components/mnt/request/RequestList";
+import RequestAssignList from "./components/mnt/requestAssign/RequestAssignList";
 import { MyAuthProvider } from "./MyAuthProvider";
 import CustomLayout from "./reactAdminCustom/CustomLayout";
 import CustomLogin from "./reactAdminCustom/CustomLogin";
@@ -75,7 +76,7 @@ const customBuildFields: BuildFields = (type, fetchType) => {
     //return extractFieldsFromQuery(DELETE_MNT_REQUEST_ASSIGN);
   }
 
-  // No custom query defined, so use the default query fields (all, but no related/nested).
+  // else return default query fields
   return buildFields(type, fetchType);
 };
 
@@ -161,7 +162,7 @@ function App() {
           />
           <Resource
             name="mnt_request_assign"
-            list={ListGuesser}
+            list={RequestAssignList}
             edit={EditItem}
             create={CreateItem}
           />
