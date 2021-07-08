@@ -23,6 +23,9 @@ import Dashboard from "./components/dashboard/Dashboard";
 import { CreateItem } from "./components/mnt/items/CreateItem";
 import { EditItem } from "./components/mnt/items/EditItem";
 import ProjectList from "./components/mnt/project/ProjectList";
+import RequestCreate from "./components/mnt/request/RequestCreate";
+import RequestEdit from "./components/mnt/request/RequestEdit";
+import RequestList from "./components/mnt/request/RequestList";
 import { MyAuthProvider } from "./MyAuthProvider";
 import CustomLayout from "./reactAdminCustom/CustomLayout";
 import CustomLogin from "./reactAdminCustom/CustomLogin";
@@ -110,6 +113,18 @@ function App() {
           />
           <Resource
             name="mnt_customer_unit"
+            list={ListGuesser}
+            edit={EditItem}
+            create={CreateItem}
+          />
+          <Resource
+            name="mnt_request"
+            list={RequestList}
+            edit={RequestEdit}
+            create={RequestCreate}
+          />
+          <Resource
+            name="mnt_request_assign"
             list={ListGuesser}
             edit={EditItem}
             create={CreateItem}

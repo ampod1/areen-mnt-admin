@@ -8,7 +8,7 @@ export default function CreateUser(props: any) {
     passwired: "0000",
   });
   return (
-    <Create {...props} transform={transform}>
+    <Create {...props} transform={transform} >
       <UserForm {...props} />
     </Create>
   );

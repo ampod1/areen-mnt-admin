@@ -12,10 +12,12 @@ import {
   RiCommunityFill,
   RiBuilding2Fill,
   RiDoorLine,
+  RiClipboardFill,
 } from "react-icons/ri";
+import { IoHammerSharp } from "react-icons/io5";
 export default function CustomMenu(props: MenuProps) {
   return (
-    <div className="">
+    <div style={{width:"100%"}}>
       <Box m={2} py={2}>
         <MenuItemLink
           to="/"
@@ -72,6 +74,20 @@ export default function CustomMenu(props: MenuProps) {
           leftIcon={<RiDoorLine style={{ fontSize: "1.5em" }} />}
           {...props}
           primaryText="Customer's Units"
+        />
+        <MenuItemLink
+          to="/mnt_request"
+          exact
+          leftIcon={<RiClipboardFill style={{ fontSize: "1.5em" }} />}
+          {...props}
+          primaryText="Customer's Requests"
+        />
+        <MenuItemLink
+          to="/mnt_request_assign"
+          exact
+          leftIcon={<IoHammerSharp style={{ fontSize: "1.5em" }} />}
+          {...props}
+          primaryText="Technincians Tasks"
         />
       </Box>
     </div>
