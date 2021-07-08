@@ -79,6 +79,8 @@ const customBuildFields: BuildFields = (type, fetchType) => {
   return buildFields(type, fetchType);
 };
 
+// Custom data provider
+
 const client = createApolloClient();
 function App() {
   const [dataProvider, setDataProvider] = useState<null | Function>(null);
