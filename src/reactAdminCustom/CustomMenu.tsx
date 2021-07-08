@@ -6,7 +6,13 @@ import {
 } from "@material-ui/icons";
 import React from "react";
 import { MenuItemLink, MenuProps } from "react-admin";
-import { RiCustomerService2Line, RiDashboard2Line } from "react-icons/ri";
+import {
+  RiCustomerService2Line,
+  RiDashboard2Line,
+  RiCommunityFill,
+  RiBuilding2Fill,
+  RiDoorLine,
+} from "react-icons/ri";
 export default function CustomMenu(props: MenuProps) {
   return (
     <div className="">
@@ -45,6 +51,27 @@ export default function CustomMenu(props: MenuProps) {
           leftIcon={<DnsTwoTone style={{ fontSize: "1.5em" }} />}
           {...props}
           primaryText="Maintenance Items"
+        />
+        <MenuItemLink
+          to="/mnt_project"
+          exact
+          leftIcon={<RiBuilding2Fill style={{ fontSize: "1.5em" }} />}
+          {...props}
+          primaryText="Projects"
+        />
+        <MenuItemLink
+          to="/mnt_unit"
+          exact
+          leftIcon={<RiCommunityFill style={{ fontSize: "1.5em" }} />}
+          {...props}
+          primaryText="Units"
+        />
+        <MenuItemLink
+          to="/mnt_customer_unit"
+          exact
+          leftIcon={<RiDoorLine style={{ fontSize: "1.5em" }} />}
+          {...props}
+          primaryText="Customer's Units"
         />
       </Box>
     </div>

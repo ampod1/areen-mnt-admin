@@ -4,7 +4,7 @@ import {
   HttpLink,
   InMemoryCache,
 } from "@apollo/client";
-import { makeStyles } from "@material-ui/core/styles";
+
 //@ts-ignore
 import buildHasuraProvider from "ra-data-hasura";
 import React, { useEffect, useState } from "react";
@@ -22,44 +22,14 @@ import UsertypeList from "./components/coreUsertype/UsertypeList";
 import Dashboard from "./components/dashboard/Dashboard";
 import { CreateItem } from "./components/mnt/items/CreateItem";
 import { EditItem } from "./components/mnt/items/EditItem";
-import CustLoginPage from "./CustLoginPage";
+import ProjectList from "./components/mnt/project/ProjectList";
 import { MyAuthProvider } from "./MyAuthProvider";
 import CustomLayout from "./reactAdminCustom/CustomLayout";
+import CustomLogin from "./reactAdminCustom/CustomLogin";
 import { theme } from "./theme";
 const headers = {
   "content-type": "application/json",
   "x-hasura-admin-secret": process.env.REACT_APP_HASURA_GRAPHQL_ADMIN_SECRET,
-};
-
-const useStyles = makeStyles({
-  avatar: {
-    display: "none",
-  },
-  button: { background: "#b02626" },
-});
-
-const MyLoginPage = () => {
-  const custClss = useStyles();
-  return (
-    <>
-      <Login
-        // A random image that changes everyday
-        backgroundImage="https://i.imgur.com/aaxvOwJ.jpg"
-        classes={custClss}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            margin: "3em 1em 1em 1em",
-          }}
-        >
-          <img src="https://i.imgur.com/oZ1qmMo.png" alt="" />
-        </div>
-        <CustLoginPage />
-      </Login>
-    </>
-  );
 };
 
 const createApolloClient = () => {
@@ -97,7 +67,7 @@ function App() {
           authProvider={new MyAuthProvider()}
           theme={theme}
           dataProvider={dataProvider!}
-          loginPage={MyLoginPage}
+          loginPage={CustomLogin}
           dashboard={Dashboard}
           layout={CustomLayout}
         >
@@ -121,6 +91,25 @@ function App() {
           />
           <Resource
             name="mnt_item"
+            list={ListGuesser}
+            edit={EditItem}
+            create={CreateItem}
+          />
+          <Resource name="mnt_site" />
+          <Resource
+            name="mnt_project"
+            list={ProjectList}
+            edit={EditItem}
+            create={CreateItem}
+          />
+          <Resource
+            name="mnt_unit"
+            list={ListGuesser}
+            edit={EditItem}
+            create={CreateItem}
+          />
+          <Resource
+            name="mnt_customer_unit"
             list={ListGuesser}
             edit={EditItem}
             create={CreateItem}

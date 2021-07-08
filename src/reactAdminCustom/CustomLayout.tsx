@@ -7,6 +7,5 @@ const CustomSidebar = (props: SidebarProps) => {
 };
 
 export default function CustomLayout(props: any) {
-  console.log(props);
   return <Layout {...props} menu={CustomMenu} sidebar={CustomSidebar} />;
 }
