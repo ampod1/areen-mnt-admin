@@ -29,6 +29,8 @@ import CustomerUnitList from "./components/mnt/customerUnit/CustomerUnitList";
 import { CreateMntItem } from "./components/mnt/mntItems/CreateMntItem";
 import { EditMntItem } from "./components/mnt/mntItems/EditMntItem";
 import MntItemList from "./components/mnt/mntItems/MntItemList";
+import ProjectCreate from "./components/mnt/project/ProjectCreate";
+import ProjectEdit from "./components/mnt/project/ProjectEdit";
 import ProjectList from "./components/mnt/project/ProjectList";
 import RequestCreate from "./components/mnt/request/RequestCreate";
 import RequestEdit from "./components/mnt/request/RequestEdit";
@@ -43,6 +45,8 @@ import StatusTypeList from "./components/mnt/requestStatusType/StatusTypeList";
 import CreateSite from "./components/mnt/site/CreateSite";
 import EditSite from "./components/mnt/site/EditSite";
 import SiteList from "./components/mnt/site/SiteList";
+import CreateUnit from "./components/mnt/unit/CreateUnit";
+import EditUnit from "./components/mnt/unit/EditUnit";
 import UnitList from "./components/mnt/unit/UnitList";
 import { MyAuthProvider } from "./MyAuthProvider";
 import CustomLayout from "./reactAdminCustom/CustomLayout";
@@ -155,8 +159,18 @@ function App() {
             edit={EditSite}
             list={SiteList}
           />
-          <Resource name="mnt_project" list={ProjectList} />
-          <Resource name="mnt_unit" list={UnitList} />
+          <Resource
+            name="mnt_project"
+            list={ProjectList}
+            edit={ProjectEdit}
+            create={ProjectCreate}
+          />
+          <Resource
+            name="mnt_unit"
+            list={UnitList}
+            edit={EditUnit}
+            create={CreateUnit}
+          />
           <Resource
             name="mnt_customer_unit"
             list={CustomerUnitList}
