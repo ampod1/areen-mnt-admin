@@ -7,9 +7,8 @@ import {
 import React from "react";
 import { MenuItemLink, MenuProps } from "react-admin";
 import { BiBuildingHouse } from 'react-icons/bi';
-import { BsCardChecklist } from 'react-icons/bs';
-import { GrStatusGood } from 'react-icons/gr';
-import { IoHammerSharp } from "react-icons/io5";
+import { BsFillQuestionSquareFill } from 'react-icons/bs';
+import { IoHammerSharp,IoAlbums } from "react-icons/io5";
 import {
   RiBuilding2Fill, RiClipboardFill, RiCommunityFill, RiCustomerService2Line,
   RiDashboard2Line, RiDoorLine
@@ -99,14 +98,14 @@ export default function CustomMenu(props: MenuProps) {
          <MenuItemLink
           to="/mnt_request_status_type"
           exact
-          leftIcon={<GrStatusGood style={{ fontSize: "1.5em", color: '#ccc' }} />}
+          leftIcon={<BsFillQuestionSquareFill style={{ fontSize: "1.5em" }} />}
           {...props}
           primaryText="Request Status Types"
         />
         <MenuItemLink
           to="/mnt_request_status"
           exact
-          leftIcon={<BsCardChecklist style={{ fontSize: "1.5em", color: '#ccc' }} />}
+          leftIcon={<IoAlbums style={{ fontSize: "1.5em" }} />}
           {...props}
           primaryText="Request Status"
         />

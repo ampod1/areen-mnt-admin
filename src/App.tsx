@@ -3,12 +3,12 @@ import {
   ApolloProvider,
   gql,
   HttpLink,
-  InMemoryCache
+  InMemoryCache,
 } from "@apollo/client";
 import buildHasuraProvider, {
   BuildFields,
   buildFields,
-  FetchType
+  FetchType,
 } from "ra-data-hasura";
 import React, { useEffect, useState } from "react";
 import { Admin, LegacyDataProvider, Resource } from "react-admin";
@@ -22,28 +22,30 @@ import { UserList } from "./components/coreUser/UserList";
 import CreateUsertype from "./components/coreUsertype/CreateUsertype";
 import EditUsertype from "./components/coreUsertype/EditUsertype";
 import UsertypeList from "./components/coreUsertype/UsertypeList";
-import Dashboard from './components/dashboard/Dashboard';
+import Dashboard from "./components/dashboard/Dashboard";
+import CustomerUnitCreate from "./components/mnt/customerUnit/CustomerUnitCreate";
+import CustomerUnitEdit from "./components/mnt/customerUnit/CustomerUnitEdit";
 import CustomerUnitList from "./components/mnt/customerUnit/CustomerUnitList";
 import { CreateMntItem } from "./components/mnt/mntItems/CreateMntItem";
 import { EditMntItem } from "./components/mnt/mntItems/EditMntItem";
-import ItemList from './components/mnt/mntItems/ItemList';
+import MntItemList from "./components/mnt/mntItems/MntItemList";
 import ProjectList from "./components/mnt/project/ProjectList";
 import RequestCreate from "./components/mnt/request/RequestCreate";
 import RequestEdit from "./components/mnt/request/RequestEdit";
 import RequestList from "./components/mnt/request/RequestList";
 import RequestAssignList from "./components/mnt/requestAssign/RequestAssignList";
-import CreateRequestStatus from './components/mnt/requestStatus/CreateRequestStatus';
-import EditRequestStatus from './components/mnt/requestStatus/EditRequestStatus';
-import RequestStatus from './components/mnt/requestStatus/RequestStatus';
-import CreateRequestStatusType from './components/mnt/requestStatusType/CreateRequestStatusType';
-import EditRequestStatusType from './components/mnt/requestStatusType/EditRequestStatusType';
-import StatusTypeList from './components/mnt/requestStatusType/StatusTypeList';
-import CreateSite from './components/mnt/site/CreateSite';
-import EditSite from './components/mnt/site/EditSite';
-import SiteList from './components/mnt/site/SiteList';
+import CreateRequestStatus from "./components/mnt/requestStatus/CreateRequestStatus";
+import EditRequestStatus from "./components/mnt/requestStatus/EditRequestStatus";
+import RequestStatusList from "./components/mnt/requestStatus/RequestStatusList";
+import CreateRequestStatusType from "./components/mnt/requestStatusType/CreateRequestStatusType";
+import EditRequestStatusType from "./components/mnt/requestStatusType/EditRequestStatusType";
+import StatusTypeList from "./components/mnt/requestStatusType/StatusTypeList";
+import CreateSite from "./components/mnt/site/CreateSite";
+import EditSite from "./components/mnt/site/EditSite";
+import SiteList from "./components/mnt/site/SiteList";
 import UnitList from "./components/mnt/unit/UnitList";
 import { MyAuthProvider } from "./MyAuthProvider";
-import CustomLayout from './reactAdminCustom/CustomLayout';
+import CustomLayout from "./reactAdminCustom/CustomLayout";
 import CustomLogin from "./reactAdminCustom/CustomLogin";
 import { theme } from "./theme";
 
@@ -143,7 +145,7 @@ function App() {
           />
           <Resource
             name="mnt_item"
-            list={ItemList}
+            list={MntItemList}
             edit={EditMntItem}
             create={CreateMntItem}
           />
@@ -153,19 +155,13 @@ function App() {
             edit={EditSite}
             list={SiteList}
           />
-          <Resource
-            name="mnt_project"
-            list={ProjectList}
-
-          />
-          <Resource
-            name="mnt_unit"
-            list={UnitList}
-          />
+          <Resource name="mnt_project" list={ProjectList} />
+          <Resource name="mnt_unit" list={UnitList} />
           <Resource
             name="mnt_customer_unit"
             list={CustomerUnitList}
-
+            edit={CustomerUnitEdit}
+            create={CustomerUnitCreate}
           />
           <Resource
             name="mnt_request"
@@ -173,10 +169,7 @@ function App() {
             edit={RequestEdit}
             create={RequestCreate}
           />
-          <Resource
-            name="mnt_request_assign"
-            list={RequestAssignList}
-          />
+          <Resource name="mnt_request_assign" list={RequestAssignList} />
           <Resource
             name="mnt_request_status_type"
             list={StatusTypeList}
@@ -185,11 +178,10 @@ function App() {
           />
           <Resource
             name="mnt_request_status"
-            list={RequestStatus}
+            list={RequestStatusList}
             create={CreateRequestStatus}
             edit={EditRequestStatus}
           />
-
         </Admin>
       </ApolloProvider>
     </>
