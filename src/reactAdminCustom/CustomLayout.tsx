@@ -3,7 +3,7 @@ import { Layout, Sidebar, SidebarProps } from "react-admin";
 import CustomMenu from "./CustomMenu";
 
 const CustomSidebar = (props: SidebarProps) => {
-  return <Sidebar {...props} style={{ minWidth: "300px" }} />;
+  return <Sidebar {...props}/>;
 };
 
 export default function CustomLayout(props: any) {

@@ -13,6 +13,7 @@ export const theme = createMuiTheme(
     },
     sidebar: {
       closedWidth: 80,
+      width: 260,
     },
   })
 );

@@ -12,7 +12,7 @@ import { useMyDefaultStyles } from "../../styles/default";
 export const UserList = (props: any) => {
   const defaultClss = useMyDefaultStyles();
   return (
-    <List {...props}>
+    <List {...props} sort={{ field: "code", order: "ASC" }}>
       <Datagrid rowClick="edit">
         <NumberField headerClassName={defaultClss.header} label="Code" source="code" />
         <EmailField source="email" headerClassName={defaultClss.header} label="Email" />
