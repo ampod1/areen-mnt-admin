@@ -81,7 +81,7 @@ export default function RequestForm(props: any) {
           resource: "mnt_request_assign",
           payload: { data: { request_id: id, technician_id } },
         });
-      } catch (error) {
+      } catch (error: any) {
         if (error?.body?.errors) {
           return error.body.errors;
         }
