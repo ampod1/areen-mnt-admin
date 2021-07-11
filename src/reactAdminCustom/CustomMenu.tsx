@@ -2,19 +2,19 @@ import { Box } from "@material-ui/core";
 import {
   AssignmentIndTwoTone,
   DnsTwoTone,
-  LockTwoTone,
+  LockTwoTone
 } from "@material-ui/icons";
 import React from "react";
 import { MenuItemLink, MenuProps } from "react-admin";
-import {
-  RiCustomerService2Line,
-  RiDashboard2Line,
-  RiCommunityFill,
-  RiBuilding2Fill,
-  RiDoorLine,
-  RiClipboardFill,
-} from "react-icons/ri";
+import { BiBuildingHouse } from 'react-icons/bi';
+import { BsCardChecklist } from 'react-icons/bs';
+import { GrStatusGood } from 'react-icons/gr';
 import { IoHammerSharp } from "react-icons/io5";
+import {
+  RiBuilding2Fill, RiClipboardFill, RiCommunityFill, RiCustomerService2Line,
+  RiDashboard2Line, RiDoorLine
+} from "react-icons/ri";
+
 export default function CustomMenu(props: MenuProps) {
   return (
     <div style={{width:"100%"}}>
@@ -54,6 +54,13 @@ export default function CustomMenu(props: MenuProps) {
           {...props}
           primaryText="Maintenance Items"
         />
+         <MenuItemLink
+          to="/mnt_site"
+          exact
+          leftIcon={<BiBuildingHouse style={{ fontSize: "1.5em" }} />}
+          {...props}
+          primaryText="Sites"
+        />
         <MenuItemLink
           to="/mnt_project"
           exact
@@ -87,7 +94,21 @@ export default function CustomMenu(props: MenuProps) {
           exact
           leftIcon={<IoHammerSharp style={{ fontSize: "1.5em" }} />}
           {...props}
-          primaryText="Technincians Tasks"
+          primaryText="Technicians Tasks"
+        />
+         <MenuItemLink
+          to="/mnt_request_status_type"
+          exact
+          leftIcon={<GrStatusGood style={{ fontSize: "1.5em", color: '#ccc' }} />}
+          {...props}
+          primaryText="Request Status Types"
+        />
+        <MenuItemLink
+          to="/mnt_request_status"
+          exact
+          leftIcon={<BsCardChecklist style={{ fontSize: "1.5em", color: '#ccc' }} />}
+          {...props}
+          primaryText="Request Status"
         />
       </Box>
     </div>

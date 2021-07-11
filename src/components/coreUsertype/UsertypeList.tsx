@@ -5,7 +5,7 @@ import {
   List,
   ListProps,
   NumberField,
-  TextField,
+  TextField
 } from "react-admin";
 import { useMyDefaultStyles } from "../../styles/default";
 
@@ -14,7 +14,7 @@ export default function UsertypeList(props: ListProps) {
   return (
     <List {...props}>
       <Datagrid rowClick="edit">
-        <NumberField source="code" headerClassName={defaultClss.header} />
+        <NumberField source="code" label="Code" headerClassName={defaultClss.header} />
         <TextField
           source="label.ar"
           label="الاسم العربي"
@@ -25,7 +25,10 @@ export default function UsertypeList(props: ListProps) {
           source="label.en"
           label="Name En"
         />
-        <DateField headerClassName={defaultClss.header} source="created_at" />
+        <DateField 
+          label="Created at"
+          headerClassName={defaultClss.header}
+          source="created_at" />
       </Datagrid>
     </List>
   );

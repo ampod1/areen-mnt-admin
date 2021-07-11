@@ -3,19 +3,31 @@ import {
   ReferenceInput,
   SelectInput,
   SimpleForm,
-  TextInput,
+  TextInput
 } from "react-admin";
+import { useMyDefaultStyles } from '../../styles/default';
 
 export default function UserForm(props: any) {
+  const defaultClss = useMyDefaultStyles();
   return (
     <SimpleForm {...props}>
-      <TextInput source="email" />
-      <TextInput source="name.full" />
-      <ReferenceInput source="user_type_id" reference="core_usertype">
-        <SelectInput optionText="label.en" />
+      <TextInput source="email" label="Email" headerClassName={defaultClss.header} />
+      <TextInput source="name.full" label="Name" headerClassName={defaultClss.header} />
+      <ReferenceInput
+        source="user_type_id"
+        label="Core UserType"
+        reference="core_usertype"
+        headerClassName={defaultClss.header}>
+        <SelectInput
+         optionText="label.en"   
+        />
       </ReferenceInput>
-      <ReferenceInput source="customer_id" reference="bsc_customer">
-        <SelectInput optionText="name.full" />
+      <ReferenceInput 
+        source="customer_id"
+        label="Customer Name" 
+        reference="bsc_customer" 
+        headerClassName={defaultClss.header}>
+        <SelectInput optionText="name.full"  />
       </ReferenceInput>
     </SimpleForm>
   );

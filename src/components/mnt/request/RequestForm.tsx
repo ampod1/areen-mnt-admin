@@ -5,10 +5,12 @@ import {
   SimpleForm,
   TextInput,
   useDataProvider,
-  useMutation,
+  useMutation
 } from "react-admin";
+import { useMyDefaultStyles } from '../../../styles/default';
 
 export default function RequestForm(props: any) {
+  const defaultClss = useMyDefaultStyles();
   const [mutate] = useMutation();
   const dataProvider = useDataProvider();
   const save = useCallback(
@@ -34,8 +36,8 @@ export default function RequestForm(props: any) {
         const { id } = returnedData.data;
         // Remove old assingments
         dataProvider.deleteMany("mnt_request_assign", {
-            ids:["0"]
-        } , {
+          ids: ["0"]
+        }, {
           fetch: "DELETE_MNT_REQUEST_ASSIGN_MUTATION",
         });
 
@@ -54,17 +56,17 @@ export default function RequestForm(props: any) {
   );
   return (
     <SimpleForm {...props} save={save}>
-      <ReferenceInput source="unit_id" reference="mnt_unit">
+      <ReferenceInput source="unit_id"
+        reference="mnt_unit" headerClassName={defaultClss.header} label="Unit Number">
         <SelectInput optionText="unit_number" />
       </ReferenceInput>
-      <ReferenceInput source="customer_id" reference="bsc_customer">
+      <ReferenceInput source="customer_id" reference="bsc_customer" headerClassName={defaultClss.header} label="Customer Name">
         <SelectInput optionText="name.full" />
       </ReferenceInput>
-
-      <ReferenceInput source="technician_id" reference="core_user">
+      <ReferenceInput source="technician_id" reference="core_user" label="Technician" headerClassName={defaultClss.header} >
         <SelectInput optionText="name.full" />
       </ReferenceInput>
-      <TextInput source="notes" />
+      <TextInput source="notes" headerClassName={defaultClss.header} />
     </SimpleForm>
   );
 }

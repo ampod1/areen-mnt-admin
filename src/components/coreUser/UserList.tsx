@@ -5,7 +5,7 @@ import {
   List,
   NumberField,
   ReferenceField,
-  TextField,
+  TextField
 } from "react-admin";
 import { useMyDefaultStyles } from "../../styles/default";
 
@@ -14,20 +14,21 @@ export const UserList = (props: any) => {
   return (
     <List {...props}>
       <Datagrid rowClick="edit">
-        <NumberField headerClassName={defaultClss.header} source="code" />
-        <EmailField source="email" headerClassName={defaultClss.header} />
+        <NumberField headerClassName={defaultClss.header} label="Code" source="code" />
+        <EmailField source="email" headerClassName={defaultClss.header} label="Email" />
         <TextField
           source="name.full"
           label="Name"
           headerClassName={defaultClss.header}
         />
-        <TextField source="phone" headerClassName={defaultClss.header} />
-        <DateField source="created_at" headerClassName={defaultClss.header} />
+        <TextField source="phone" label="Phone" headerClassName={defaultClss.header} />
+        <DateField source="created_at" label="Created at" headerClassName={defaultClss.header} />
 
         <ReferenceField
           headerClassName={defaultClss.header}
           source="user_type_id"
           reference="core_usertype"
+          label="User Type"
         >
           <TextField source="label.en" />
         </ReferenceField>
