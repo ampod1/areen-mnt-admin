@@ -2,21 +2,25 @@ import { Box } from "@material-ui/core";
 import {
   AssignmentIndTwoTone,
   DnsTwoTone,
-  LockTwoTone
+  LockTwoTone,
 } from "@material-ui/icons";
 import React from "react";
 import { MenuItemLink, MenuProps } from "react-admin";
-import { BiBuildingHouse } from 'react-icons/bi';
-import { BsFillQuestionSquareFill } from 'react-icons/bs';
-import { IoHammerSharp,IoAlbums } from "react-icons/io5";
+import { BiBuildingHouse } from "react-icons/bi";
+import { BsFillQuestionSquareFill } from "react-icons/bs";
+import { IoAlbums, IoHammerSharp, IoNewspaperSharp } from "react-icons/io5";
 import {
-  RiBuilding2Fill, RiClipboardFill, RiCommunityFill, RiCustomerService2Line,
-  RiDashboard2Line, RiDoorLine
+  RiBuilding2Fill,
+  RiClipboardFill,
+  RiCommunityFill,
+  RiCustomerService2Line,
+  RiDashboard2Line,
+  RiDoorLine,
 } from "react-icons/ri";
 
 export default function CustomMenu(props: MenuProps) {
   return (
-    <div style={{width:"100%"}}>
+    <div style={{ width: "100%" }}>
       <Box m={2} py={2}>
         <MenuItemLink
           to="/"
@@ -53,7 +57,7 @@ export default function CustomMenu(props: MenuProps) {
           {...props}
           primaryText="Maintenance Items"
         />
-         <MenuItemLink
+        <MenuItemLink
           to="/mnt_site"
           exact
           leftIcon={<BiBuildingHouse style={{ fontSize: "1.5em" }} />}
@@ -95,7 +99,7 @@ export default function CustomMenu(props: MenuProps) {
           {...props}
           primaryText="Technicians Tasks"
         />
-         <MenuItemLink
+        <MenuItemLink
           to="/mnt_request_status_type"
           exact
           leftIcon={<BsFillQuestionSquareFill style={{ fontSize: "1.5em" }} />}
@@ -108,6 +112,13 @@ export default function CustomMenu(props: MenuProps) {
           leftIcon={<IoAlbums style={{ fontSize: "1.5em" }} />}
           {...props}
           primaryText="Request Status"
+        />
+        <MenuItemLink
+          to="/mnt_contracts"
+          exact
+          leftIcon={<IoNewspaperSharp style={{ fontSize: "1.5em" }} />}
+          {...props}
+          primaryText="Contracts"
         />
       </Box>
     </div>

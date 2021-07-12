@@ -42,6 +42,14 @@ export default function RequestList(props: ListProps) {
           <TextField source="name.full" />
         </ReferenceField>
         */}
+        <ReferenceField
+          source="request_status_id"
+          reference="mnt_request_status_type"
+          label="Request Status"
+          headerClassName={defaultClss.header}
+        >
+          <TextField source="label.en" />
+        </ReferenceField>
         <DateField
           source="created_at"
           label="Created at"

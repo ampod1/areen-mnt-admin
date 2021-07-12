@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import {
+  DateInput,
+  FormDataConsumer,
   GetListParams,
   ReferenceInput,
   SelectInput,
@@ -36,9 +38,12 @@ export default function RequestForm(props: any) {
       const list = await dataProvider.getList("mnt_request_assign", {
         filter: { request_id: props.id },
       } as GetListParams);
-      const [technician_id] = list.data.map((one) => one.technician_id);
-      props.record.technician_id = technician_id;
-      console.log("to technician_id", technician_id);
+      const [first] = list.data;
+      console.log("first", first);
+      if (first) {
+        props.record.technician_id = first.technician_id;
+        props.record.assign_date = first.assign_date;
+      }
       setCustomRecord(props.record);
     };
     getTechnician();
@@ -46,10 +51,15 @@ export default function RequestForm(props: any) {
 
   const save = useCallback(
     async (data) => {
-      const { technician_id } = data;
-      // Optimistic set technician_id
-      setCustomRecord({ ...customRecord, technician_id });
-      delete data.technician_id;
+      const { technician_id, assign_date } = data;
+      // Optimistic set record
+      setCustomRecord({ ...data });
+      if (technician_id) {
+        delete data.technician_id;
+        // Change request status to assigned
+        // TODO remove static ids
+        data.request_status_id = "90d8232e-ee6d-40ce-ac37-9fd3cbc86212";
+      }
       console.log("save", data);
       let payload: any = { data };
       try {
@@ -72,15 +82,16 @@ export default function RequestForm(props: any) {
           filter: { request_id: props.id },
         } as GetListParams);
         const ids = list.data.map((one) => one.id);
-        await dataProvider.deleteMany("mnt_request_assign", {
-          ids,
-        });
-
-        await mutate({
-          type: "create",
-          resource: "mnt_request_assign",
-          payload: { data: { request_id: id, technician_id } },
-        });
+        if (ids.length > 0)
+          await dataProvider.deleteMany("mnt_request_assign", {
+            ids,
+          });
+        if (technician_id)
+          await mutate({
+            type: "create",
+            resource: "mnt_request_assign",
+            payload: { data: { request_id: id, technician_id, assign_date } },
+          });
       } catch (error: any) {
         if (error?.body?.errors) {
           return error.body.errors;
@@ -112,6 +123,12 @@ export default function RequestForm(props: any) {
         reference="core_user"
         key={customRecord?.technician_id}
       />
+      <FormDataConsumer>
+        {({ formData, ...rest }) => {
+          if (formData.technician_id)
+            return <DateInput source="assign_date" {...rest} />;
+        }}
+      </FormDataConsumer>
       <TextInput source="notes" headerClassName={defaultClss.header} />
     </SimpleForm>
   );
