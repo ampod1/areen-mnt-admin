@@ -2,7 +2,7 @@ import { Box } from "@material-ui/core";
 import {
   AssignmentIndTwoTone,
   DnsTwoTone,
-  LockTwoTone,
+  LockTwoTone
 } from "@material-ui/icons";
 import React from "react";
 import { MenuItemLink, MenuProps } from "react-admin";
@@ -15,7 +15,7 @@ import {
   RiCommunityFill,
   RiCustomerService2Line,
   RiDashboard2Line,
-  RiDoorLine,
+  RiDoorLine
 } from "react-icons/ri";
 
 export default function CustomMenu(props: MenuProps) {
@@ -114,7 +114,7 @@ export default function CustomMenu(props: MenuProps) {
           primaryText="Request Status"
         />
         <MenuItemLink
-          to="/mnt_contracts"
+          to="/mnt_contract"
           exact
           leftIcon={<IoNewspaperSharp style={{ fontSize: "1.5em" }} />}
           {...props}

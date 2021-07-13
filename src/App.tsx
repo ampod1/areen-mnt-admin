@@ -3,12 +3,12 @@ import {
   ApolloProvider,
   gql,
   HttpLink,
-  InMemoryCache,
+  InMemoryCache
 } from "@apollo/client";
 import buildHasuraProvider, {
   BuildFields,
   buildFields,
-  FetchType,
+  FetchType
 } from "ra-data-hasura";
 import React, { useEffect, useState } from "react";
 import { Admin, LegacyDataProvider, Resource } from "react-admin";
@@ -23,6 +23,9 @@ import CreateUsertype from "./components/coreUsertype/CreateUsertype";
 import EditUsertype from "./components/coreUsertype/EditUsertype";
 import UsertypeList from "./components/coreUsertype/UsertypeList";
 import Dashboard from "./components/dashboard/Dashboard";
+import ContractList from './components/mnt/contract/ContractList';
+import CreateContract from './components/mnt/contract/CreateContract';
+import EditContract from './components/mnt/contract/EditContract';
 import CustomerUnitCreate from "./components/mnt/customerUnit/CustomerUnitCreate";
 import CustomerUnitEdit from "./components/mnt/customerUnit/CustomerUnitEdit";
 import CustomerUnitList from "./components/mnt/customerUnit/CustomerUnitList";
@@ -195,6 +198,12 @@ function App() {
             list={RequestStatusList}
             create={CreateRequestStatus}
             edit={EditRequestStatus}
+          />
+          <Resource 
+            name="mnt_contract"
+            list={ContractList}
+            create={CreateContract}
+            edit={EditContract}
           />
         </Admin>
       </ApolloProvider>
