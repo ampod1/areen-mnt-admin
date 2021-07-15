@@ -10,28 +10,34 @@ import {
 } from 'react-admin';
 import { useMyDefaultStyles } from '../../../styles/default';
 
-export default function CustomerList(props: ListProps) {
+const AddressList = (props: ListProps) => {
 	const defaultClss = useMyDefaultStyles();
+
 	return (
 		<List {...props}>
-			<Datagrid rowClick="edit">
-				<NumberField
-					source="code"
-					label="Code"
+			<Datagrid>
+				<TextField
+					source="address"
+					label="Address"
 					headerClassName={defaultClss.header}
 				/>
-				<TextField
-					source="name.full"
+				<NumberField
+					source="lng"
+					label="Longitude"
 					headerClassName={defaultClss.header}
-					label="Customer's Name"
+				/>
+				<NumberField
+					source="lat"
+					label="Latitude"
+					headerClassName={defaultClss.header}
 				/>
 				<ReferenceField
-					source="customer_type_id"
-					reference="bsc_customer_type"
-					label="Customer Type"
+					source="unit_id"
+					reference="mnt_unit"
+					label="Unit Number"
 					headerClassName={defaultClss.header}
 				>
-					<TextField source="label.ar" />
+					<TextField source="unit_number" />
 				</ReferenceField>
 				<DateField
 					source="created_at"
@@ -41,4 +47,6 @@ export default function CustomerList(props: ListProps) {
 			</Datagrid>
 		</List>
 	);
-}
+};
+
+export default AddressList;

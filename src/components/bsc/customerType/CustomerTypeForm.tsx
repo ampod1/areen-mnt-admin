@@ -7,24 +7,36 @@ import {
 } from 'react-admin';
 import { useMyDefaultStyles } from '../../../styles/default';
 
-export default function CustomerForm(props: any) {
+const CustomerTypeForm = (props: any) => {
 	const defaultClss = useMyDefaultStyles();
 
 	return (
 		<SimpleForm {...props}>
 			<TextInput
-				source="name.full"
+				source="label.en"
 				label="Name"
 				headerClassName={defaultClss.header}
 			/>
+			<TextInput
+				source="label.ar"
+				label="الاسم"
+				headerClassName={defaultClss.header}
+			/>
+			<TextInput
+				source="terms"
+				label="Terms & Conditions"
+				headerClassName={defaultClss.header}
+			/>
 			<ReferenceInput
-				source="customer_type_id"
-				reference="bsc_customer_type"
-				label="Customer Type"
+				source="customer_id"
+				reference="bsc_customer"
+				label="Customer"
 				headerClassName={defaultClss.header}
 			>
-				<SelectInput optionText="label.ar" />
+				<SelectInput optionText="name.full" />
 			</ReferenceInput>
 		</SimpleForm>
 	);
-}
+};
+
+export default CustomerTypeForm;
