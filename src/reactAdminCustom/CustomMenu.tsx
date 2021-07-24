@@ -7,7 +7,7 @@ import {
   LockTwoTone,
 } from "@material-ui/icons";
 import React, { useState } from "react";
-import { MenuItemLink, MenuProps } from "react-admin";
+import { MenuItemLink, MenuProps, ReduxState } from "react-admin";
 import { BiBuildingHouse } from "react-icons/bi";
 import { BsFillQuestionSquareFill, BsPersonLinesFill } from "react-icons/bs";
 import { GiMailbox } from "react-icons/gi";
@@ -20,9 +20,14 @@ import {
   RiDashboard2Line,
   RiDoorLine,
 } from "react-icons/ri";
+import { useSelector } from "react-redux";
 
 export default function CustomMenu(props: MenuProps) {
   const [openContracts, setOpenContracts] = useState(false);
+  const isSidebarOpen = useSelector(
+    (state: ReduxState) => state.admin.ui.sidebarOpen
+  );
+  console.log(props);
   return (
     <div style={{ width: "100%" }}>
       <Box m={2} py={2}>
@@ -124,7 +129,7 @@ export default function CustomMenu(props: MenuProps) {
             setOpenContracts(!openContracts);
           }}
         >
-          <ListItemText primary="Units Contracts" />
+          <ListItemText primary={isSidebarOpen ? "Unit Contracts" : ""} />
           {openContracts ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
         <Collapse in={openContracts} timeout="auto" unmountOnExit>
