@@ -10,6 +10,7 @@ import {
   useDataProvider,
   useMutation,
 } from "react-admin";
+import { CONFIGS } from "../../../configs";
 import { useMyDefaultStyles } from "../../../styles/default";
 
 const TechnicianInput = (props: any) => {
@@ -18,7 +19,10 @@ const TechnicianInput = (props: any) => {
   // const { values } = useFormState();
   return (
     <>
-      <ReferenceInput {...props}>
+      <ReferenceInput
+        {...props}
+        filter={{ user_type_id: CONFIGS.BUSINESS_CONFIGS.TECHNICIAN_TYPE_UUID }}
+      >
         <SelectInput optionText="name.full" />
       </ReferenceInput>
     </>
@@ -46,7 +50,7 @@ export default function RequestForm(props: any) {
       }
       setCustomRecord(props.record);
     };
-    getTechnician();
+    if (props.id) getTechnician();
   }, []);
 
   const save = useCallback(

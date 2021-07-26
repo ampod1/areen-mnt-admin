@@ -23,7 +23,11 @@ import {
 import { useSelector } from "react-redux";
 
 export default function CustomMenu(props: MenuProps) {
-  const [openContracts, setOpenContracts] = useState(false);
+  const [openContractsSub, setOpenContractsSub] = useState(false);
+  const [openUsersSub, setOpenUsersSub] = useState(false);
+  const [openUnitsSub, setOpenUnitsSub] = useState(false);
+  const [openCustomersSub, setOpenCustomersSub] = useState(false);
+  const [openRequestsSub, setOpenRequestsSub] = useState(false);
   const isSidebarOpen = useSelector(
     (state: ReduxState) => state.admin.ui.sidebarOpen
   );
@@ -38,101 +42,154 @@ export default function CustomMenu(props: MenuProps) {
           {...props}
           primaryText="Home"
         />
-        <MenuItemLink
-          to="/core_user"
-          exact
-          leftIcon={<AssignmentIndTwoTone style={{ fontSize: "1.5em" }} />}
-          {...props}
-          primaryText="Users"
-        />
-        <MenuItemLink
-          to="/core_usertype"
-          exact
-          leftIcon={<LockTwoTone style={{ fontSize: "1.5em" }} />}
-          {...props}
-          primaryText="User Types"
-        />
-        <MenuItemLink
-          to="/bsc_customer"
-          exact
-          leftIcon={<RiCustomerService2Line style={{ fontSize: "1.5em" }} />}
-          {...props}
-          primaryText="Customers"
-        />
-        <MenuItemLink
-          to="/bsc_customer_type"
-          exact
-          leftIcon={<BsPersonLinesFill style={{ fontSize: "1.5em" }} />}
-          {...props}
-          primaryText="Customer Types"
-        />
-
-        <MenuItemLink
-          to="/mnt_site"
-          exact
-          leftIcon={<BiBuildingHouse style={{ fontSize: "1.5em" }} />}
-          {...props}
-          primaryText="Sites"
-        />
-        <MenuItemLink
-          to="/mnt_project"
-          exact
-          leftIcon={<RiBuilding2Fill style={{ fontSize: "1.5em" }} />}
-          {...props}
-          primaryText="Projects"
-        />
-        <MenuItemLink
-          to="/mnt_unit"
-          exact
-          leftIcon={<RiCommunityFill style={{ fontSize: "1.5em" }} />}
-          {...props}
-          primaryText="Units"
-        />
-        <MenuItemLink
-          to="/mnt_customer_unit"
-          exact
-          leftIcon={<RiDoorLine style={{ fontSize: "1.5em" }} />}
-          {...props}
-          primaryText="Customer's Units"
-        />
-        <MenuItemLink
-          to="/mnt_request"
-          exact
-          leftIcon={<RiClipboardFill style={{ fontSize: "1.5em" }} />}
-          {...props}
-          primaryText="Customer's Requests"
-        />
-        <MenuItemLink
-          to="/mnt_request_assign"
-          exact
-          leftIcon={<IoHammerSharp style={{ fontSize: "1.5em" }} />}
-          {...props}
-          primaryText="Technicians Tasks"
-        />
-        <MenuItemLink
-          to="/mnt_request_status_type"
-          exact
-          leftIcon={<BsFillQuestionSquareFill style={{ fontSize: "1.5em" }} />}
-          {...props}
-          primaryText="Request Status Types"
-        />
-        <MenuItemLink
-          to="/mnt_request_status"
-          exact
-          leftIcon={<IoAlbums style={{ fontSize: "1.5em" }} />}
-          {...props}
-          primaryText="Request Status"
-        />
         <ListItem
           button
           onClick={() => {
-            setOpenContracts(!openContracts);
+            setOpenUsersSub(!openUsersSub);
+          }}
+        >
+          <ListItemText primary={isSidebarOpen ? "Users" : ""} />
+          {openUsersSub ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={openUsersSub} timeout="auto" unmountOnExit>
+          <MenuItemLink
+            to="/core_user"
+            exact
+            leftIcon={<AssignmentIndTwoTone style={{ fontSize: "1.5em" }} />}
+            {...props}
+            primaryText="Users"
+          />
+          <MenuItemLink
+            to="/core_usertype"
+            exact
+            leftIcon={<LockTwoTone style={{ fontSize: "1.5em" }} />}
+            {...props}
+            primaryText="User Types"
+          />
+        </Collapse>
+
+        <ListItem
+          button
+          onClick={() => {
+            setOpenCustomersSub(!openCustomersSub);
+          }}
+        >
+          <ListItemText primary={isSidebarOpen ? "Customers" : ""} />
+          {openCustomersSub ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={openCustomersSub} timeout="auto" unmountOnExit>
+          <MenuItemLink
+            to="/bsc_customer"
+            exact
+            leftIcon={<RiCustomerService2Line style={{ fontSize: "1.5em" }} />}
+            {...props}
+            primaryText="Customers"
+          />
+          <MenuItemLink
+            to="/bsc_customer_type"
+            exact
+            leftIcon={<BsPersonLinesFill style={{ fontSize: "1.5em" }} />}
+            {...props}
+            primaryText="Customer Types"
+          />
+        </Collapse>
+        <ListItem
+          button
+          onClick={() => {
+            setOpenUnitsSub(!openUnitsSub);
+          }}
+        >
+          <ListItemText primary={isSidebarOpen ? "Units" : ""} />
+          {openUnitsSub ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={openUnitsSub} timeout="auto" unmountOnExit>
+          <MenuItemLink
+            to="/mnt_site"
+            exact
+            leftIcon={<BiBuildingHouse style={{ fontSize: "1.5em" }} />}
+            {...props}
+            primaryText="Sites"
+          />
+          <MenuItemLink
+            to="/mnt_project"
+            exact
+            leftIcon={<RiBuilding2Fill style={{ fontSize: "1.5em" }} />}
+            {...props}
+            primaryText="Projects"
+          />
+          <MenuItemLink
+            to="/mnt_unit"
+            exact
+            leftIcon={<RiCommunityFill style={{ fontSize: "1.5em" }} />}
+            {...props}
+            primaryText="Units"
+          />
+          <MenuItemLink
+            to="/mnt_address"
+            exact
+            leftIcon={<GiMailbox style={{ fontSize: "1.5em" }} />}
+            {...props}
+            primaryText="Addresses"
+          />
+          <MenuItemLink
+            to="/mnt_customer_unit"
+            exact
+            leftIcon={<RiDoorLine style={{ fontSize: "1.5em" }} />}
+            {...props}
+            primaryText="Customer's Units"
+          />
+        </Collapse>
+        <ListItem
+          button
+          onClick={() => {
+            setOpenRequestsSub(!openRequestsSub);
+          }}
+        >
+          <ListItemText primary={isSidebarOpen ? "Requests" : ""} />
+          {openRequestsSub ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={openRequestsSub} timeout="auto" unmountOnExit>
+          <MenuItemLink
+            to="/mnt_request"
+            exact
+            leftIcon={<RiClipboardFill style={{ fontSize: "1.5em" }} />}
+            {...props}
+            primaryText="Customer's Requests"
+          />
+          <MenuItemLink
+            to="/mnt_request_assign"
+            exact
+            leftIcon={<IoHammerSharp style={{ fontSize: "1.5em" }} />}
+            {...props}
+            primaryText="Technicians Tasks"
+          />
+          <MenuItemLink
+            to="/mnt_request_status_type"
+            exact
+            leftIcon={
+              <BsFillQuestionSquareFill style={{ fontSize: "1.5em" }} />
+            }
+            {...props}
+            primaryText="Request Status Types"
+          />
+          <MenuItemLink
+            to="/mnt_request_status"
+            exact
+            leftIcon={<IoAlbums style={{ fontSize: "1.5em" }} />}
+            {...props}
+            primaryText="Request Status"
+          />
+        </Collapse>
+        <ListItem
+          button
+          onClick={() => {
+            setOpenContractsSub(!openContractsSub);
           }}
         >
           <ListItemText primary={isSidebarOpen ? "Unit Contracts" : ""} />
-          {openContracts ? <ExpandLess /> : <ExpandMore />}
+          {openContractsSub ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
-        <Collapse in={openContracts} timeout="auto" unmountOnExit>
+        <Collapse in={openContractsSub} timeout="auto" unmountOnExit>
           <MenuItemLink
             to="/mnt_contract"
             exact
@@ -148,14 +205,6 @@ export default function CustomMenu(props: MenuProps) {
             primaryText="Maintenance Items"
           />
         </Collapse>
-
-        <MenuItemLink
-          to="/mnt_address"
-          exact
-          leftIcon={<GiMailbox style={{ fontSize: "1.5em" }} />}
-          {...props}
-          primaryText="Addresses"
-        />
       </Box>
     </div>
   );

@@ -79,35 +79,6 @@ const createApolloClient = () => {
     },
   });
 };
-const extractFieldsFromQuery = (queryAst: any) => {
-  return queryAst.definitions[0].selectionSet.selections;
-};
-
-const DELETE_MNT_REQUEST_ASSIGN = gql`
-  mutation ($code: Int) {
-    delete_mnt_request_assign(where: { code: { _eq: $code } }) {
-      affected_rows
-    }
-  }
-`;
-
-const customBuildFields: BuildFields = (type, fetchType) => {
-  const resourceName = type.name;
-  console.log(resourceName, fetchType);
-
-  if (
-    resourceName === "mnt_request_assign" &&
-    fetchType === FetchType.DELETE_MANY
-  ) {
-    console.log("extractFieldsFromQuery mnt_request_assign");
-    //return extractFieldsFromQuery(DELETE_MNT_REQUEST_ASSIGN);
-  }
-
-  // else return default query fields
-  return buildFields(type, fetchType);
-};
-
-// Custom data provider
 
 const client = createApolloClient();
 function App() {
