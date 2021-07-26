@@ -14,7 +14,7 @@ const CustomerTypeList = (props: ListProps) => {
 
   return (
     <List {...props}>
-      <Datagrid>
+      <Datagrid rowClick="edit">
         <NumberField
           source="code"
           label="Code"

@@ -1,17 +1,18 @@
 import {
   ApolloClient,
   ApolloProvider,
-  gql,
   HttpLink,
   InMemoryCache,
 } from "@apollo/client";
-import buildHasuraProvider, {
-  BuildFields,
-  buildFields,
-  FetchType,
-} from "ra-data-hasura";
+import buildHasuraProvider from "ra-data-hasura";
 import React, { useEffect, useState } from "react";
-import { Admin, LegacyDataProvider, Resource } from "react-admin";
+import {
+  Admin,
+  EditGuesser,
+  LegacyDataProvider,
+  ListGuesser,
+  Resource,
+} from "react-admin";
 import "./App.css";
 import CreateCustomer from "./components/bsc/customer/CreateCustomer";
 import CustomerList from "./components/bsc/customer/CustomerList";
@@ -32,6 +33,7 @@ import EditAddress from "./components/mnt/address/EditAddress";
 import ContractList from "./components/mnt/contract/ContractList";
 import CreateContract from "./components/mnt/contract/CreateContract";
 import EditContract from "./components/mnt/contract/EditContract";
+import ContractItemCreate from "./components/mnt/contractItem/ContractItemCreate";
 import CustomerUnitCreate from "./components/mnt/customerUnit/CustomerUnitCreate";
 import CustomerUnitEdit from "./components/mnt/customerUnit/CustomerUnitEdit";
 import CustomerUnitList from "./components/mnt/customerUnit/CustomerUnitList";
@@ -193,6 +195,12 @@ function App() {
             list={AddressList}
             create={CreateAddress}
             edit={EditAddress}
+          />
+          <Resource
+            name="mnt_contract_item"
+            edit={EditGuesser}
+            list={ListGuesser}
+            create={ContractItemCreate}
           />
         </Admin>
       </ApolloProvider>

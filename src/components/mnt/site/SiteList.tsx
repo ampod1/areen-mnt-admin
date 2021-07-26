@@ -3,15 +3,15 @@ import { Datagrid, DateField, List, ListProps, NumberField, TextField } from 're
 
 const SiteList = (props: ListProps) => {
   return (
-    <List {...props} >
-      <Datagrid>
+    <List {...props}>
+      <Datagrid rowClick="edit">
         <NumberField source="code" />
         <TextField source="label.ar" />
         <TextField source="label.en" />
         <DateField source="created_at" />
       </Datagrid>
     </List>
-  )
+  );
 }
 
 export default SiteList
