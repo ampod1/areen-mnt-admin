@@ -1,2 +1,2 @@
-declare module "ra-data-hasura";
-declare module "ra-data-graphql";
+declare module 'ra-data-hasura';
+declare module 'ra-data-graphql';

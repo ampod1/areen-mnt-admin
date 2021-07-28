@@ -14,23 +14,23 @@ const AddressForm = (props: any) => {
 		<SimpleForm {...props}>
 			<TextInput
 				source="address"
-				label="Address"
+				label="custom_root.main.address"
 				headerClassName={defaultClss.header}
 			/>
 			<NumberInput
 				source="lng"
-				label="Longitude"
+				label="custom_root.main.lng"
 				headerClassName={defaultClss.header}
 			/>
 			<NumberInput
 				source="lat"
-				label="Latitude"
+				label="custom_root.main.lat"
 				headerClassName={defaultClss.header}
 			/>
 			<ReferenceInput
 				source="unit_id"
 				reference="mnt_unit"
-				label="Unit Number"
+				label="custom_root.main.unit_number"
 				headerClassName={defaultClss.header}
 			>
 				<SelectInput optionText="unit_number" />
