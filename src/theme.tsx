@@ -1,4 +1,4 @@
-import { createTheme } from "@material-ui/core";
+import { createTheme } from "@material-ui/core/styles";
 import merge from "lodash/merge";
 import { defaultTheme } from "react-admin";
 
