@@ -3,5 +3,13 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
   },
-  "typescript.tsdk": "node_modules\\typescript\\lib"
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#b02626",
+    "titleBar.inactiveBackground": "#b02626",
+    "statusBar.background": "#b02626",
+    "activityBar.background": "#b02626",
+    "activityBar.activeBackground": "#2d304b",
+    "statusBar.foreground": "#ffffff"
+  }
 }

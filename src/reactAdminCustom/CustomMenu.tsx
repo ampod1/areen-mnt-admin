@@ -24,11 +24,14 @@ import { useSelector } from "react-redux";
 import LocaleSwitcher from "./../components/UI/LocalSwitch";
 
 export default function CustomMenu(props: MenuProps) {
+  // Collapse States
   const [openContractsSub, setOpenContractsSub] = useState(false);
   const [openUsersSub, setOpenUsersSub] = useState(false);
   const [openUnitsSub, setOpenUnitsSub] = useState(false);
   const [openCustomersSub, setOpenCustomersSub] = useState(false);
   const [openRequestsSub, setOpenRequestsSub] = useState(false);
+  const [openLangSub, setOpenLangSub] = useState(false);
+  // End Collapse States
   const isSidebarOpen = useSelector(
     (state: ReduxState) => state.admin.ui.sidebarOpen
   );
@@ -37,7 +40,20 @@ export default function CustomMenu(props: MenuProps) {
   return (
     <div style={{ width: "100%" }}>
       <Box m={2} py={2}>
-        <LocaleSwitcher />
+        <ListItem
+          button
+          onClick={() => {
+            setOpenLangSub(!openLangSub);
+          }}
+        >
+          <ListItemText
+            primary={isSidebarOpen ? translate("custom_root.menu.lang") : ""}
+          />
+          {openLangSub ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={openLangSub} timeout="auto" unmountOnExit>
+          <LocaleSwitcher isSidebarOpen={isSidebarOpen} />
+        </Collapse>
         <MenuItemLink
           to="/"
           exact
