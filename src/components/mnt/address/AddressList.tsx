@@ -7,14 +7,22 @@ import {
 	NumberField,
 	ReferenceField,
 	TextField,
+	SearchInput,
 } from 'react-admin';
 import { useMyDefaultStyles } from '../../../styles/default';
+import ListActions from './../../../reactAdminCustom/ListActions';
 
 const AddressList = (props: ListProps) => {
 	const defaultClss = useMyDefaultStyles();
-
+	const Filters = [
+		<SearchInput
+			source={`address`}
+			alwaysOn
+			placeholder="Enter customer name"
+		/>,
+	];
 	return (
-		<List {...props}>
+		<List {...props} actions={<ListActions />} filters={Filters}>
 			<Datagrid rowClick="edit">
 				<TextField
 					source="address"

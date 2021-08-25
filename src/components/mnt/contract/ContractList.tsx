@@ -12,6 +12,7 @@ import { useMyDefaultStyles } from '../../../styles/default';
 
 const ContractList = (props: ListProps) => {
 	const defaultClss = useMyDefaultStyles();
+
 	return (
 		<List {...props} sort={{ field: 'code', order: 'ASC' }}>
 			<Datagrid rowClick="edit">

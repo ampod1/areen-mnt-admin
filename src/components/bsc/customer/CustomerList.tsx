@@ -8,14 +8,19 @@ import {
 	ReferenceField,
 	TextField,
 	useLocale,
+	SearchInput,
 } from 'react-admin';
 import { useMyDefaultStyles } from '../../../styles/default';
+import ListActions from './../../../reactAdminCustom/ListActions';
 
+const Filters = [
+	<SearchInput source="name.full" alwaysOn placeholder="Enter customer name" />,
+];
 export default function CustomerList(props: ListProps) {
 	const defaultClss = useMyDefaultStyles();
 	const lang = useLocale();
 	return (
-		<List {...props}>
+		<List {...props} actions={<ListActions />} filters={Filters}>
 			<Datagrid rowClick="edit">
 				<NumberField
 					source="code"

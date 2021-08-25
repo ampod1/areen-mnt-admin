@@ -7,14 +7,25 @@ import {
 	ReferenceField,
 	TextField,
 	useLocale,
+	SearchInput,
 } from 'react-admin';
 import { useMyDefaultStyles } from '../../styles/default';
+import ListActions from './../../reactAdminCustom/ListActions';
+
+const Filters = [
+	<SearchInput source="name.full" alwaysOn placeholder="Enter user name" />,
+];
 
 export const UserList = (props: any) => {
 	const defaultClss = useMyDefaultStyles();
 	const lang = useLocale();
 	return (
-		<List {...props} sort={{ field: 'code', order: 'ASC' }}>
+		<List
+			{...props}
+			sort={{ field: 'code', order: 'ASC' }}
+			actions={<ListActions />}
+			filters={Filters}
+		>
 			<Datagrid rowClick="edit">
 				<NumberField
 					headerClassName={defaultClss.header}
