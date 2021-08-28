@@ -74,7 +74,7 @@ export default function CustomMenu(props: MenuProps) {
         </ListItem>
         <Collapse in={openUsersSub} timeout="auto" unmountOnExit>
           <MenuItemLink
-            to="/core_user"
+            to="/core_user_v"
             exact
             leftIcon={<AssignmentIndTwoTone style={{ fontSize: "1.5em" }} />}
             {...props}
