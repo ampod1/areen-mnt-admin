@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import {
 	DateInput,
+	DateTimeInput,
 	FormDataConsumer,
 	GetListParams,
 	ReferenceInput,
@@ -131,7 +132,7 @@ export default function RequestForm(props: any) {
 			<FormDataConsumer label="custom_root.main.assign_date">
 				{({ formData, ...rest }) => {
 					if (formData.technician_id)
-						return <DateInput source="assign_date" {...rest} />;
+						return <DateTimeInput source="assign_date" {...rest} />;
 				}}
 			</FormDataConsumer>
 			<TextInput

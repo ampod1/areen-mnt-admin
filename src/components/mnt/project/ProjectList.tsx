@@ -8,7 +8,7 @@ import {
 	ReferenceField,
 	TextField,
 	useLocale,
-	SearchInput,
+	TextInput,
 } from 'react-admin';
 import { useMyDefaultStyles } from '../../../styles/default';
 import ListActions from './../../../reactAdminCustom/ListActions';
@@ -17,11 +17,7 @@ export default function ProjectList(props: ListProps) {
 	const defaultClss = useMyDefaultStyles();
 	const lang = useLocale();
 	const Filters = [
-		<SearchInput
-			source={`label.${lang}`}
-			alwaysOn
-			placeholder="Enter customer name"
-		/>,
+		<TextInput source="label_ar,label_en" alwaysOn label="Search" />,
 	];
 	return (
 		<List {...props} actions={<ListActions />} filters={Filters}>

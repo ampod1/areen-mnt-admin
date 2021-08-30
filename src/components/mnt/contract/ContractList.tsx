@@ -44,6 +44,11 @@ const ContractList = (props: ListProps) => {
 					label="custom_root.main.created_at"
 					headerClassName={defaultClss.header}
 				/>
+				<TextField
+					source="monthly_visits_count"
+					label="Monthly Visits"
+					headerClassName={defaultClss.header}
+				/>
 			</Datagrid>
 		</List>
 	);

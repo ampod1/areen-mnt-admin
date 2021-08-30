@@ -28,7 +28,7 @@ const ProjectFilterList = ({ projects }: { projects: any[] }) => {
 							<FilterListItem
 								key={project.id}
 								label={project.label[lang]}
-								value="test"
+								value={{ project_id: project.id }}
 							/>
 						))}
 					</FilterList>
