@@ -7,6 +7,7 @@
     "customers": "Customers",
     "customer_types": "Customer Types",
     "units": "Units",
+    "cities": "Cities",
     "sites": "Sites",
     "projects": "Projects",
     "addresses": "Addresses",
@@ -49,6 +50,7 @@
     "lat": "Latitude",
     "contract": "Contract",
     "customer_type": "Customer Type",
-    "basic_info": "Basic Info"
+    "basic_info": "Basic Info",
+    "monthly_visits": "Monthly Visits"
   }
 }

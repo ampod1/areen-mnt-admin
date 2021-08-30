@@ -7,6 +7,7 @@
     "customers": "العملاء",
     "customer_types": "أنواع العملاء",
     "units": "الوحدات",
+    "cities": "المدن",
     "sites": "المواقع",
     "projects": "المشاريع",
     "addresses": "العناوين",
@@ -49,6 +50,7 @@
     "lat": "خط العرض",
     "contract": "العقد",
     "customer_type": "نوع العميل",
-    "basic_info": "البيانات الاساسية"
+    "basic_info": "البيانات الاساسية",
+    "monthly_visits": "عدد الزيارات الشهرية"
   }
 }

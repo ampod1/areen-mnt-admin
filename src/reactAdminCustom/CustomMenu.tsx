@@ -11,7 +11,7 @@ import { MenuItemLink, MenuProps, ReduxState, useTranslate } from "react-admin";
 import { BiBuildingHouse } from "react-icons/bi";
 import { BsFillQuestionSquareFill, BsPersonLinesFill } from "react-icons/bs";
 import { FaUserFriends } from "react-icons/fa";
-import { GiMailbox } from "react-icons/gi";
+import { GiMailbox, GiModernCity } from "react-icons/gi";
 import { IoAlbums, IoHammerSharp, IoNewspaperSharp } from "react-icons/io5";
 import {
   RiBuilding2Fill,
@@ -130,6 +130,13 @@ export default function CustomMenu(props: MenuProps) {
           {openUnitsSub ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
         <Collapse in={openUnitsSub} timeout="auto" unmountOnExit>
+          <MenuItemLink
+            to="/mnt_city"
+            exact
+            leftIcon={<GiModernCity style={{ fontSize: "1.5em" }} />}
+            {...props}
+            primaryText={translate("custom_root.menu.cities")}
+          />
           <MenuItemLink
             to="/mnt_site"
             exact
