@@ -108,8 +108,12 @@ function App() {
           dashboard={Dashboard}
           layout={CustomLayout}
         >
-          <Resource name="core_user" create={CreateUser} edit={EditUser} />
-          <Resource name="core_user_v" list={UserList} />
+          <Resource
+            name="core_user"
+            list={UserList}
+            create={CreateUser}
+            edit={EditUser}
+          />
           <Resource
             name="core_usertype"
             list={UsertypeList}

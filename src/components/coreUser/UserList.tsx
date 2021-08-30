@@ -6,18 +6,14 @@ import {
   NumberField,
   ReferenceField,
   TextField,
-  useLocale,
-  SearchInput,
   TextInput,
+  useLocale,
 } from "react-admin";
 import { useMyDefaultStyles } from "../../styles/default";
 import ListActions from "./../../reactAdminCustom/ListActions";
 
 const Filters = [
-  /*
-	<SearchInput source="name.full" alwaysOn placeholder="Enter user name" />,
-  */
-  <TextInput label="Search" source="fullname,email" alwaysOn />,
+  <TextInput label="Search" source="fullname,email,phone" alwaysOn />,
 ];
 
 export const UserList = (props: any) => {
