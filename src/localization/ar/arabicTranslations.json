@@ -19,7 +19,8 @@
     "req_stat": "حالات الطلبات",
     "unit_contracts": "عقود الوحدات",
     "mnt_items": "عناصر الصيانة",
-    "lang": "اللغة"
+    "lang": "اللغة",
+    "user_cities": "مدينة المستخدم"
   },
   "main": {
     "code": "الكود",
@@ -29,6 +30,7 @@
     "user_type": "نوع المستخدم",
     "created_at": "وقت الإنشاء",
     "customer_name": "اسم العميل",
+    "customer": "العميل",
     "default_period": "الفترة الإضافية (أشهر)",
     "months": "الشهور",
     "default_price": "السعر الافتراضي",
@@ -51,6 +53,10 @@
     "contract": "العقد",
     "customer_type": "نوع العميل",
     "basic_info": "البيانات الاساسية",
-    "monthly_visits": "عدد الزيارات الشهرية"
+    "monthly_visits": "عدد الزيارات الشهرية",
+    "city": "المدينة",
+    "user": "المستخدم",
+    "search": "البحث",
+    "assigned_by": "الموافقة علي الطلب"
   }
 }

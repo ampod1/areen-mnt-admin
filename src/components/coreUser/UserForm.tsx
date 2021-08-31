@@ -1,5 +1,6 @@
 import { Chip, Grid, Paper, Typography } from "@material-ui/core";
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 import {
   ChipField,
   ReferenceInput,
@@ -9,10 +10,37 @@ import {
   SingleFieldList,
   TextInput,
   useLocale,
+  useRecordContext,
 } from "react-admin";
 import { RiMapPinUserLine } from "react-icons/ri";
+import { AUTH_CONSTS } from "../../MyAuthProvider";
 import { useMyDefaultStyles } from "../../styles/default";
 
+const CustomChip = ({ source }: any) => {
+  const record = useRecordContext();
+  const [cityName, setCityName] = useState("");
+  useEffect(() => {
+    if (record.city_id) {
+      const cities: any[] = JSON.parse(
+        localStorage.getItem(AUTH_CONSTS.MNT_CITIES)!
+      );
+      const [city] = cities.filter(
+        ({ id }: { id: string }) => id === record.city_id
+      );
+      setCityName(city.label.en);
+    }
+  }, [record]);
+
+  return (
+    <Chip
+      label={cityName}
+      icon={<RiMapPinUserLine style={{ fontSize: "1.5em", padding: ".5em" }} />}
+      onDelete={() => {}}
+      style={{ margin: ".5em" }}
+      color="primary"
+    />
+  );
+};
 const UserCities = (props: any) => {
   return (
     <div>
@@ -34,7 +62,7 @@ const UserCities = (props: any) => {
       >
         <div style={{ margin: "1em" }}>
           <SingleFieldList>
-            <ChipField source="city_id" />
+            <CustomChip />
           </SingleFieldList>
         </div>
       </ReferenceManyField>

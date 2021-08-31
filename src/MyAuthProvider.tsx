@@ -29,12 +29,17 @@ export const USER_LOGIN = gql`
     ) {
       ...UserFields
     }
+    mnt_city {
+      id
+      label
+    }
   }
 `;
-
-const AUTH_CONSTS = {
+// TODO move configs and constants outsite auth
+export const AUTH_CONSTS = {
   LOGGED_IN: "LOGGED_IN",
   USER_UUID: "USER_UUID",
+  MNT_CITIES: "MNT_CITIES",
 };
 
 class MyAuthProvider implements AuthProvider {
@@ -58,6 +63,13 @@ class MyAuthProvider implements AuthProvider {
 
       localStorage.setItem(AUTH_CONSTS.LOGGED_IN, "true");
       localStorage.setItem(AUTH_CONSTS.USER_UUID, resp?.data?.core_user[0].id);
+      if (resp?.data?.mnt_city) {
+        console.log(resp?.data?.mnt_city);
+        localStorage.setItem(
+          AUTH_CONSTS.MNT_CITIES,
+          JSON.stringify(resp?.data?.mnt_city)
+        );
+      }
     }
   }
 

@@ -16,7 +16,11 @@ const CustomerTypeList = (props: ListProps) => {
   const lang = useLocale();
 
   return (
-    <List {...props} actions={<ListActions />}>
+    <List
+      sort={{ field: "code", order: "ASC" }}
+      {...props}
+      actions={<ListActions />}
+    >
       <Datagrid rowClick="edit">
         <NumberField
           source="code"

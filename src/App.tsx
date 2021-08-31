@@ -61,6 +61,11 @@ import CustomLogin from "./reactAdminCustom/CustomLogin";
 import { theme } from "./theme";
 import { client } from "./apollo/apolloClient";
 import CityList from "./components/mnt/city/CityList";
+import CityCreate from "./components/mnt/city/CityCreate";
+import CityEdit from "./components/mnt/city/CityEdit";
+import UserCityList from "./components/mnt/userCity/UserCityList";
+import UserCityEdit from "./components/mnt/userCity/UserCityEdit";
+import UserCityCreate from "./components/mnt/userCity/UserCityCreate";
 
 function App() {
   const [dataProvider, setDataProvider] = useState<null | Function>(null);
@@ -98,7 +103,12 @@ function App() {
             create={CreateUser}
             edit={EditUser}
           />
-          <Resource name="mnt_user_city" />
+          <Resource
+            name="mnt_user_city"
+            list={UserCityList}
+            edit={UserCityEdit}
+            create={UserCityCreate}
+          />
           <Resource
             name="core_usertype"
             list={UsertypeList}
@@ -117,7 +127,12 @@ function App() {
             edit={EditMntItem}
             create={CreateMntItem}
           />
-          <Resource name="mnt_city" list={CityList} />
+          <Resource
+            name="mnt_city"
+            list={CityList}
+            create={CityCreate}
+            edit={CityEdit}
+          />
           <Resource
             name="mnt_site"
             create={CreateSite}

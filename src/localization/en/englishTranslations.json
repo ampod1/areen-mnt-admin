@@ -19,7 +19,8 @@
     "req_stat": "Request Status",
     "unit_contracts": "Unit Contracts",
     "mnt_items": "Maintenance Items",
-    "lang": "Language"
+    "lang": "Language",
+    "user_cities": "User Cities"
   },
   "main": {
     "code": "Code",
@@ -29,6 +30,7 @@
     "user_type": "User Type",
     "created_at": "Created at",
     "customer_name": "Customer's Name",
+    "customer": "Customer",
     "default_period": "Default Period (Months)",
     "months": "Months",
     "default_price": "Default Price",
@@ -51,6 +53,10 @@
     "contract": "Contract",
     "customer_type": "Customer Type",
     "basic_info": "Basic Info",
-    "monthly_visits": "Monthly Visits"
+    "monthly_visits": "Monthly Visits",
+    "city": "City",
+    "user": "User",
+    "search": "Search",
+    "assigned_by": "Approved By"
   }
 }

@@ -32,6 +32,14 @@ export default function CustomerForm(props: any) {
         label="custom_root.main.phone"
         headerClassName={defaultClss.header}
       />
+      <ReferenceInput
+        source="city_id"
+        reference="mnt_city"
+        label="custom_root.main.city"
+        headerClassName={defaultClss.header}
+      >
+        <SelectInput optionText={`label.${lang}`} />
+      </ReferenceInput>
     </SimpleForm>
   );
 }

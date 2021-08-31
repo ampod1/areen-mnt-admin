@@ -1,17 +1,18 @@
 import React from "react";
 import {
-  Datagrid,
-  DateField,
-  List,
   ListProps,
-  NumberField,
+  useLocale,
+  List,
+  Datagrid,
   ReferenceField,
+  NumberField,
   TextField,
 } from "react-admin";
 import { useMyDefaultStyles } from "../../../styles/default";
 
-export default function RequestAssignList(props: ListProps) {
+export default function UserCityList(props: ListProps) {
   const defaultClss = useMyDefaultStyles();
+  const lang = useLocale();
   return (
     <List sort={{ field: "code", order: "ASC" }} {...props}>
       <Datagrid rowClick="edit">
@@ -21,34 +22,21 @@ export default function RequestAssignList(props: ListProps) {
           headerClassName={defaultClss.header}
         />
         <ReferenceField
-          label="custom_root.main.technician"
-          source="technician_id"
+          source="user_id"
           reference="core_user"
+          label="User"
           headerClassName={defaultClss.header}
         >
           <TextField source="name.full" />
         </ReferenceField>
         <ReferenceField
-          label="custom_root.main.assigned_by"
-          source="assigned_by"
-          reference="core_user"
+          source="city_id"
+          reference="mnt_city"
+          label="City"
           headerClassName={defaultClss.header}
         >
-          <TextField source="name.full" />
+          <TextField source="label.ar" />
         </ReferenceField>
-        <ReferenceField
-          source="request_id"
-          reference="mnt_request"
-          headerClassName={defaultClss.header}
-          label="custom_root.main.req_code"
-        >
-          <TextField source="code" />
-        </ReferenceField>
-        <DateField
-          source="created_at"
-          label="custom_root.main.created_at"
-          headerClassName={defaultClss.header}
-        />
       </Datagrid>
     </List>
   );

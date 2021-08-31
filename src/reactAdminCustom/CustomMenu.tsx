@@ -87,6 +87,13 @@ export default function CustomMenu(props: MenuProps) {
             {...props}
             primaryText={translate("custom_root.menu.user_types")}
           />
+          <MenuItemLink
+            to="/mnt_user_city"
+            exact
+            leftIcon={<GiModernCity style={{ fontSize: "1.5em" }} />}
+            {...props}
+            primaryText={translate("custom_root.menu.user_cities")}
+          />
         </Collapse>
 
         <ListItem
