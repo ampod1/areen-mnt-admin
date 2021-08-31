@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import {
   Datagrid,
   DateField,
@@ -15,7 +15,7 @@ import {
 import { useMyDefaultStyles } from "../../../styles/default";
 import ListActions from "./../../../reactAdminCustom/ListActions";
 
-const Filters = [
+const Filters: ReactElement[] = [
   <ReferenceInput
     label="custom_root.main.city"
     source="city_id"
