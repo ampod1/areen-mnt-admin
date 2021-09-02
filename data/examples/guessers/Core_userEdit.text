@@ -1,0 +1,22 @@
+export const Core_userEdit = (props) => (
+  <Edit {...props}>
+    <SimpleForm>
+      <NumberInput source="code" />
+      <DateInput source="created_at" />
+      <ReferenceInput source="customer_id" reference="customers">
+        <SelectInput optionText="id" />
+      </ReferenceInput>
+      <TextInput source="email" />
+      <TextInput source="fullname" />
+      <TextInput source="id" />
+      <TextInput source="media.profile_img.url" />
+      <TextInput source="name.full" />
+      <DateInput source="passwired" />
+      <TextInput source="phone" />
+      <DateInput source="updated_at" />
+      <ReferenceInput source="user_type_id" reference="user_types">
+        <SelectInput optionText="id" />
+      </ReferenceInput>
+    </SimpleForm>
+  </Edit>
+);

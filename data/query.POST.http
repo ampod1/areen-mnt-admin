@@ -7,6 +7,9 @@ x-hasura-admin-secret: bzVu3Vj5YcCqqCMilt0oro4Dg1bWeMWVJQlazLaQiJRhxnfjFI2IdjHJj
 {
   "type": "run_sql",
   "args": {
-    "sql":"SELECT column_name, data_type FROM information_schema.columns WHERE table_schema = 'public' AND table_name = 'core_user';"
+    // Retrieving table with comments
+    //"sql":"SELECT cols.column_name, cols.data_type, ( SELECT pg_catalog.col_description(c.oid, cols.ordinal_position::int) FROM pg_catalog.pg_class c WHERE c.oid = ( SELECT cols.table_name::regclass::oid ) AND c.relname = cols.table_name ) as column_comment FROM information_schema.columns cols WHERE cols.table_name = 'mnt_city';"
+    // Retrieving table comments
+    "sql":"select obj_description('public.core_user'::regclass);"
   }
 }
