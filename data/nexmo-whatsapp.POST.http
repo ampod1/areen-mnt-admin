@@ -1,0 +1,16 @@
+
+POST https://messages-sandbox.nexmo.com/v0.1/messages
+Content-Type: application/json
+Accept: application/json
+Authorization: Basic OTZlNDRkNjM6TFZqM3NGTUozcnVIVHFJbw==
+
+{
+    "from": { "type": "whatsapp", "number": "14157386170" },
+    "to": { "type": "whatsapp", "number": "201158689460" },
+    "message": {
+      "content": {
+        "type": "text",
+        "text": "Hello, dada for"
+      }
+    }
+  }
