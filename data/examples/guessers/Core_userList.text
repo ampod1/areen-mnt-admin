@@ -1,0 +1,25 @@
+export const Core_userList = props => (
+    <List {...props}>
+        <Datagrid rowClick="edit">
+            <NumberField source="code" />
+            <DateField source="created_at" />
+            <ReferenceField source="customer_id" reference="customers">
+              <TextField source="id" />
+            </ReferenceField>
+            <EmailField source="email" />
+            <TextField source="fullname" />
+            <TextField source="id" />
+            <TextField source="name.full" />
+            <DateField source="passwired" />
+            <TextField source="phone" />
+            <DateField source="updated_at" />
+            <ReferenceField source="user_type_id" reference="user_types">
+              <TextField source="id" />
+            </ReferenceField>
+            <ReferenceField source="ext_data.national_id" reference="ext_data.nationals">
+              <TextField source="id" />
+            </ReferenceField>
+            <TextField source="media.profile_img.url" />
+        </Datagrid>
+    </List>
+);

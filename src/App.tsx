@@ -1,12 +1,8 @@
-import {
-  ApolloClient,
-  ApolloProvider,
-  HttpLink,
-  InMemoryCache,
-} from "@apollo/client";
+import { ApolloProvider } from "@apollo/client";
 import buildHasuraProvider from "ra-data-hasura";
 import React, { useEffect, useState } from "react";
 import { Admin, LegacyDataProvider, ListGuesser, Resource } from "react-admin";
+import { client } from "./apollo/apolloClient";
 import "./App.css";
 import CreateCustomer from "./components/bsc/customer/CreateCustomer";
 import CustomerList from "./components/bsc/customer/CustomerList";
@@ -24,6 +20,9 @@ import Dashboard from "./components/dashboard/Dashboard";
 import AddressList from "./components/mnt/address/AddressList";
 import CreateAddress from "./components/mnt/address/CreateAddress";
 import EditAddress from "./components/mnt/address/EditAddress";
+import CityCreate from "./components/mnt/city/CityCreate";
+import CityEdit from "./components/mnt/city/CityEdit";
+import CityList from "./components/mnt/city/CityList";
 import ContractList from "./components/mnt/contract/ContractList";
 import CreateContract from "./components/mnt/contract/CreateContract";
 import EditContract from "./components/mnt/contract/EditContract";
@@ -54,18 +53,14 @@ import SiteList from "./components/mnt/site/SiteList";
 import CreateUnit from "./components/mnt/unit/CreateUnit";
 import EditUnit from "./components/mnt/unit/EditUnit";
 import UnitList from "./components/mnt/unit/UnitList";
+import UserCityCreate from "./components/mnt/userCity/UserCityCreate";
+import UserCityEdit from "./components/mnt/userCity/UserCityEdit";
+import UserCityList from "./components/mnt/userCity/UserCityList";
 import i18nProvider from "./localization/i18n/i18nProvider";
 import { MyAuthProvider } from "./MyAuthProvider";
 import CustomLayout from "./reactAdminCustom/CustomLayout";
 import CustomLogin from "./reactAdminCustom/CustomLogin";
 import { theme } from "./theme";
-import { client } from "./apollo/apolloClient";
-import CityList from "./components/mnt/city/CityList";
-import CityCreate from "./components/mnt/city/CityCreate";
-import CityEdit from "./components/mnt/city/CityEdit";
-import UserCityList from "./components/mnt/userCity/UserCityList";
-import UserCityEdit from "./components/mnt/userCity/UserCityEdit";
-import UserCityCreate from "./components/mnt/userCity/UserCityCreate";
 
 function App() {
   const [dataProvider, setDataProvider] = useState<null | Function>(null);
